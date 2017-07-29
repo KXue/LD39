@@ -1,3 +1,8 @@
+const INITIALDECKSIZE = 10;
+const INITIALHANDSIZE = 3;
+const TILESIZE = 16;
+const CARDWIDTH = 9;
+const CARDHEIGHT = 11;
 const playState = {
   player: null,
   items: null,
@@ -8,9 +13,30 @@ const playState = {
   hand: null, //group storing hand sprites
   cardTimer: null, //sprite representing the countdown timer
   create: function(){
-    this.player = game.add.sprite(100, 100, 'player');
+    this.populateWorld();
+    this.populateDeck();
+    this.player = game.add.sprite(5 * TILESIZE, 5 * TILESIZE, 'player');
+  },
+  populateWorld: function(){
+    const MAPWIDTH = game.camera.width / TILESIZE;
+    const MAPHEIGHT = game.camera.height / TILESIZE;
+    this.mapTiles = game.add.group();
+    for(let i = 0; i < MAPWIDTH; i++){
+      for(let j = 0; j < MAPHEIGHT; j++){
+        this.mapTiles.create(TILESIZE * i, TILESIZE * j, 'floor');
+      }
+    }
+  },
+  populateDeck: function(){
+    this.deck = game.add.group();
+    this.deck.fixedToCamera = true;
+    const GAMEWIDTH = game.camera.width;
+    const GAMEHEIGHT = game.camera.height;
+    for(let i = 0; i < INITIALDECKSIZE; i++){
+      const card = this.deck.create(GAMEWIDTH - CARDWIDTH * 2, GAMEHEIGHT - CARDHEIGHT * 2, 'card-back');
+      card.scale.setTo(2);
+    }
   }
-
 };
 
 function moveSpriteToGroup(sprite, group){

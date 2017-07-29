@@ -1,7 +1,7 @@
 //load.js
 const loadState={
 	preload: function(){
-		const loadingLabel = game.add.text(game.camera.width * 0.5, game.camera.height * 0.5, 'loading...', {font: '12px Courier', fill: '#ffffff'});
+		const loadingLabel = game.add.text(game.camera.width * 0.5, game.camera.height * 0.5, 'loading...', {font: '24px Courier', fill: '#ffffff'});
     loadingLabel.anchor.setTo(0.5);
     game.stage.backgroundColor = '#000000';
 
@@ -13,9 +13,10 @@ const loadState={
     game.load.image('card-down', 'assets/images/card_down_filled.png');
     game.load.image('card-left', 'assets/images/card_left_filled.png');
     game.load.image('card-right', 'assets/images/card_right_filled.png');
+    game.load.image('card-back', 'assets/images/card.png');
 
     // map sprites
-    game.load.image('floor1', 'assets/images/floor_1.png');
+    game.load.image('floor', 'assets/images/floor_1.png');
     game.load.image('wall-up', 'assets/images/floor_1.png');
     game.load.image('wall-down', 'assets/images/floor_1.png');
     game.load.image('wall-left', 'assets/images/floor_1.png');

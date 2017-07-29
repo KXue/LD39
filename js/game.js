@@ -1,11 +1,12 @@
 const config = {
-  width: 256,
-  height: 192,
+  width: 160,
+  height: 144,
   renderer: Phaser.AUTO,
   antialias: false,
   multiTexture: true,
   parent: ".game-div"
 };
+
 const game = new Phaser.Game(config);
 
 game.state.add('boot', bootState);
