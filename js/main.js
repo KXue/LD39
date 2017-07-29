@@ -6,7 +6,7 @@ const playState = {
   stairs: null, //group storing stair sprites
   deck: null, //group storing deck sprites
   hand: null, //group storing hand sprites
-  cardTimer: null //sprite representing the countdown timer
+  cardTimer: null, //sprite representing the countdown timer
   create: function(){
     this.player = game.add.sprite(100, 100, 'player');
   }
