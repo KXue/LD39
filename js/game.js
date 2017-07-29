@@ -1,8 +1,20 @@
+const ua = window.navigator.userAgent;
+const iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
+const webkit = !!ua.match(/WebKit/i);
+//not sure if iOS Safari supports webGL canvas pixel perfect scaling. going to use this just in case
+const iOSSafari = iOS && webkit && !ua.match(/CriOS/i);
+
+const isSafari = (/constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification))) || iOSSafari ;
+
+let renderer = Phaser.AUTO;
+if(isSafari){
+  renderer = Phaser.CANVAS;
+}
+
 const config = {
   width: 256,
   height: 192,
-  renderer: Phaser.AUTO,
-  antialias: false,
+  renderer: renderer,
   multiTexture: true,
   parent: ".game-div"
 };
