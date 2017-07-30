@@ -2,7 +2,7 @@ const titleState = {
 	create: function (){
 		const nameLabel = game.add.text(game.camera.width * 0.5, game.camera.height * 0.5, "Click anywhere to start", {
 			font: '24px Courier',
-      fill: '#ffffff',
+      fill: CONSTANTS.colors.darkest,
       align: 'center',
       wordWrap: true,
       wordWrapWidth: game.camera.width

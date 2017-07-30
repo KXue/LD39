@@ -1,8 +1,3 @@
-const INITIALDECKSIZE = 10;
-const INITIALHANDSIZE = 3;
-const TILESIZE = 16;
-const CARDWIDTH = 9;
-const CARDHEIGHT = 11;
 const playState = {
   player: null,
   items: null,
@@ -15,26 +10,26 @@ const playState = {
   create: function(){
     this.populateWorld();
     this.populateDeck();
-    this.player = game.add.sprite(5 * TILESIZE, 5 * TILESIZE, 'player');
+    this.player = game.add.sprite(5 * CONSTANTS.tileSize, 5 * CONSTANTS.tileSize, 'player', 1);
   },
   populateWorld: function(){
-    const MAPWIDTH = game.camera.width / TILESIZE;
-    const MAPHEIGHT = game.camera.height / TILESIZE;
+    const MAPWIDTH = CONSTANTS.width / CONSTANTS.tileSize;
+    const MAPHEIGHT = CONSTANTS.height / CONSTANTS.tileSize;
     this.mapTiles = game.add.group();
+    let index = 0;
     for(let i = 0; i < MAPWIDTH; i++){
       for(let j = 0; j < MAPHEIGHT; j++){
-        this.mapTiles.create(TILESIZE * i, TILESIZE * j, 'floor');
+        index = game.rnd.integerInRange(0, 14)
+        this.mapTiles.create(CONSTANTS.tileSize * i, CONSTANTS.tileSize * j, 'tiles', index);
       }
     }
   },
+  //should deck size even be a thing?
   populateDeck: function(){
     this.deck = game.add.group();
     this.deck.fixedToCamera = true;
-    const GAMEWIDTH = game.camera.width;
-    const GAMEHEIGHT = game.camera.height;
-    for(let i = 0; i < INITIALDECKSIZE; i++){
-      const card = this.deck.create(GAMEWIDTH - CARDWIDTH * 2, GAMEHEIGHT - CARDHEIGHT * 2, 'card-back');
-      card.scale.setTo(2);
+    for(let i = 0; i < CONSTANTS.initialDeckSize; i++){
+      const card = this.deck.create(CONSTANTS.width - CONSTANTS.cardWidth, CONSTANTS.height - CONSTANTS.cardHeight, 'cards', 0);
     }
   }
 };

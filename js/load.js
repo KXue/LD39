@@ -1,29 +1,17 @@
 //load.js
 const loadState={
 	preload: function(){
-		const loadingLabel = game.add.text(game.camera.width * 0.5, game.camera.height * 0.5, 'loading...', {font: '24px Courier', fill: '#ffffff'});
+		const loadingLabel = game.add.text(game.camera.width * 0.5, game.camera.height * 0.5, 'loading...', {font: '24px Courier', fill: CONSTANTS.colors.darkest});
     loadingLabel.anchor.setTo(0.5);
-    game.stage.backgroundColor = '#000000';
+    game.stage.backgroundColor = CONSTANTS.colors.light;
 
 		/**** Load graphics assets ****/
 
     // card sprites
-    game.load.spritesheet('card-states', 'assets/images/card_empty_sheet.png', 9, 11);
-    game.load.image('card-up', 'assets/images/card_up_filled.png');
-    game.load.image('card-down', 'assets/images/card_down_filled.png');
-    game.load.image('card-left', 'assets/images/card_left_filled.png');
-    game.load.image('card-right', 'assets/images/card_right_filled.png');
-    game.load.image('card-back', 'assets/images/card.png');
-
-    // map sprites
-    game.load.image('floor', 'assets/images/floor_1.png');
-    game.load.image('wall-up', 'assets/images/floor_1.png');
-    game.load.image('wall-down', 'assets/images/floor_1.png');
-    game.load.image('wall-left', 'assets/images/floor_1.png');
-    game.load.image('wall-right', 'assets/images/floor_1.png');
-
-    // player sprite
-    game.load.image('player', 'assets/images/ll_right.png');
+    game.load.spritesheet('cards', 'assets/images/cards.png', 16, 16);
+		game.load.spritesheet('tiles', 'assets/images/ground.png', 16, 16);
+		game.load.spritesheet('player', 'assets/images/player.png', 16, 16);
+		game.load.spritesheet('pickups', 'assets/images/pickups.png', 16, 16);
 
 		/**** Load audio assets ****/
 		game.load.audio('step', 'assets/sounds/step.wav');

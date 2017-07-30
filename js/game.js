@@ -12,9 +12,9 @@ if(isSafari){
 }
 
 const config = {
-  width: 160,
-  height: 144,
-  renderer: Phaser.AUTO,
+  width: CONSTANTS.width,
+  height: CONSTANTS.height,
+  renderer: renderer,
   antialias: false,
   multiTexture: true,
   parent: ".game-div"
